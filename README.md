@@ -16,7 +16,7 @@ Persistent_Storage = {
 	[2] = "0, 10/05/06 00:00:58, 2,9948,19, 18, Orc, Shaman, Ragefire Chasm, , 0",
  ```
  
-To read this in I had R skip to like 2, ignore quotes, and read it as a csv.  There are a few "dummy variable" columns and so I had R drop these columns.
+To read this in I had R skip to line 2, ignore quotes, and read it as a csv.  There are a few "dummy variable" columns and so I had R drop these columns.
 
 ```
 
