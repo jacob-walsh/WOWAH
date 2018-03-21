@@ -8,9 +8,11 @@ url: http://mmnet.iis.sinica.edu.tw/dl/wowah/
 ## Data Import
 
 Each of the 1000+ text files downloaded in the zipped data set start of like this:
+
 Persistent_Storage = {
 	[1] = "0, 10/05/06 00:00:53, 1,20739, , 8, Orc, Warrior, Durotar, , 0",
 	[2] = "0, 10/05/06 00:00:58, 2,9948,19, 18, Orc, Shaman, Ragefire Chasm, , 0",
+ 
  
 To read this in I had R skip to like 2, ignore quotes, and read it as a csv.  There are a few "dummy variable" columns and so I had R drop these columns.
 ```
@@ -23,7 +25,7 @@ w6q1<-w6q1[!is.na(w6q1$race),]
 fwrite(w6q1,"C:/Users/Shellee/Desktop/WOW/WoWAH/w6q1.txt",quote=FALSE,sep=",",row.names=FALSE,col.names=TRUE,append=FALSE);
 ```
 ## Clean up in SQL
-
+Using Microsoft Server Management Studio
 For whatever reason the data set has some extra spaces and erroneous values in the race and class columns.
 
 ```
