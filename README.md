@@ -6,6 +6,7 @@ Yeng-Ting Lee, Kuan-Ta Chen, Yun-Maw Cheng, and Chin-Laung Lei, "World of Warcra
 url: http://mmnet.iis.sinica.edu.tw/dl/wowah/
 
 ##Data Import
+
 Each of the 1000+ text files downloaded in the zipped data set start of like this:
 Persistent_Storage = {
 	[1] = "0, 10/05/06 00:00:53, 1,20739, , 8, Orc, Warrior, Durotar, , 0",
@@ -22,6 +23,7 @@ w6q1<-w6q1[!is.na(w6q1$race),]
 fwrite(w6q1,"C:/Users/Shellee/Desktop/WOW/WoWAH/w6q1.txt",quote=FALSE,sep=",",row.names=FALSE,col.names=TRUE,append=FALSE);
 ```
 ##Clean up in SQL
+
 For whatever reason the data set has some extra spaces and erroneous values in the race and class columns.
 
 ```
@@ -35,6 +37,7 @@ UPDATE [wow06-4] SET  race=replace(race, ' ', ''), class=replace(class, ' ', '')
 DELETE FROM [wow06] WHERE race NOT IN ('Orc', 'Tauren', 'Troll', 'Undead') OR class NOT IN ('Druid', 'Hunter', 'Mage', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior')
 ```
 ##Create ID table in SQL
+
 Most of the players have been observed more than once, and so ID is not a unique value, in order to cross reference the data tables for the different months and years, I needed a unique player ID table.
 ```
 -- Create table with distinct ID, race, class attribute
@@ -68,6 +71,7 @@ SELECT * INTO UniqueChars
 		WHERE ID NOT IN (SELECT DISTINCT(ID) FROM doubles)
 ```
 ##Estimating Time Played by a Unique ID
+
 Observations were recorded every 10 minutes for 3 years, so we can calculate a rough estimate of time played, but first would need to count up the number of observations for each unique player ID.
 ```
 -- Gather information on players, ID, Race, Class, Number of Observations in Q1, Q2, Q3, Q4, minimum level, maximum level, and total number of observations (n).
