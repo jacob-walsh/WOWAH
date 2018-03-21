@@ -10,11 +10,14 @@ url: http://mmnet.iis.sinica.edu.tw/dl/wowah/
 Each of the 1000+ text files downloaded in the zipped data set start of like this:
 
 Persistent_Storage = {
+
 	[1] = "0, 10/05/06 00:00:53, 1,20739, , 8, Orc, Warrior, Durotar, , 0",
+	
 	[2] = "0, 10/05/06 00:00:58, 2,9948,19, 18, Orc, Shaman, Ragefire Chasm, , 0",
  
  
 To read this in I had R skip to like 2, ignore quotes, and read it as a csv.  There are a few "dummy variable" columns and so I had R drop these columns.
+
 ```
 
 files06q1 <- dir("/WoWAH/2006_01_03", recursive=TRUE, full.names=TRUE, pattern="\\.txt$")
